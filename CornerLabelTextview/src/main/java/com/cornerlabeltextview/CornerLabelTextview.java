@@ -15,6 +15,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
+import io.github.praveensinghshekhawat.cornerlabeltextview.R;
+
 public class CornerLabelTextview extends View {
 
     public static final int MODE_LEFT = 0;
