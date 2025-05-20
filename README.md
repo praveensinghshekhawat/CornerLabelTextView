@@ -22,10 +22,19 @@ TextViews with just a few XML attributes!
 
 ## 📦 Dependency
 
+<b>➡️ Gradle (Groovy)</b>
+```gradle
+dependencies {
+    implementation 'io.github.praveensinghshekhawat:cornerlabeltextview:1.0.2'
+}
+```
+
+<b>➡️ Gradle (Kotlin DSL)</b>
 ```gradle
 dependencies {
     implementation("io.github.praveensinghshekhawat:cornerlabeltextview:1.0.2")
 }
+```
 
 
 ## 🧩 Usage
