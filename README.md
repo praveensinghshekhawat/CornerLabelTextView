@@ -29,26 +29,20 @@ dependencies {
 ```
 
 ## 🧩 Usage
-XML Example:
+```XML Example:
 
 <io.github.praveensinghshekhawat.CornerLabelTextview
-        android:id="@+id/txt1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        app:cornerLabelBackgroundColor="@color/black"
-        app:cornerLabelLength="30dp"
-        app:cornerLabelTextSize="10sp"
-        app:cornerLabelMode="left"
-        app:cornerLabelText="CornerLabel"
-        app:cornerLabelTextColor="@color/white"
-        />
+    android:id="@+id/txt1"
+    android:layout_height="100dp"
+    android:layout_width="100dp"
+    app:cornerLabelBackgroundColor="@color/black"
+    app:cornerLabelLength="30dp" 
+    app:cornerLabelMode="left"
+    app:cornerLabelText="CornerLabel" 
+    app:cornerLabelTextColor="@color/white"
+    app:cornerLabelTextSize="10sp"
+    android:gravity="center"/>
+```
         
 ## 🔧 Custom Attributes:
 
