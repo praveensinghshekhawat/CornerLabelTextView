@@ -1,4 +1,4 @@
-package com.cornerlabeltextview;
+package io.github.praveensinghshekhawat;
 
 import android.content.Context;
 import android.content.res.TypedArray;

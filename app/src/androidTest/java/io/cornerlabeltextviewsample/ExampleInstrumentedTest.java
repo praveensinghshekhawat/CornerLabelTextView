@@ -1,4 +1,4 @@
-package com.cornerlabeltextviewsample;
+package io.cornerlabeltextviewsample;
 
 import android.content.Context;
 

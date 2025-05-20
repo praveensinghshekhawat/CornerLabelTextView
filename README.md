@@ -2,21 +2,83 @@
 
 [![](https://img.shields.io/maven-central/v/io.github.praveensinghshekhawat/cornerlabeltextview.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.praveensinghshekhawat/cornerlabeltextview)
 
-A customizable Android TextView to show corner labels like **SALE**, **NEW**, etc. Easily add labels to your views without complex layouts.
+A customizable Android TextView to show corner labels like **SALE**, **NEW**, etc. Easily add labels
+to your views without complex layouts.
+A fully customizable **Corner Label TextView** for Android — Add stylish corner labels to your
+TextViews with just a few XML attributes!
 
 ---
+
+## ✨ Features
+
+- 🔹 Add corner labels to TextViews
+- 🎨 Customize label text, size, color, background
+- ↔️ Choose between left or right corner
+- 🪶 Lightweight, no heavy dependencies
+
+---
+
+## 🚀 Installation
 
 ## 📦 Dependency
 
 ```gradle
 dependencies {
-    implementation("io.github.praveensinghshekhawat:cornerlabeltextview:1.0.0")
+    implementation("io.github.praveensinghshekhawat:cornerlabeltextview:1.0.2")
 }
 
 
-🧑‍💻 Author
+## 🧩 Usage
+XML Example:
+
+<io.github.praveensinghshekhawat.CornerLabelTextview
+        android:id="@+id/txt1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        app:cornerLabelBackgroundColor="@color/black"
+        app:cornerLabelLength="30dp"
+        app:cornerLabelTextSize="10sp"
+        app:cornerLabelMode="left"
+        app:cornerLabelText="CornerLabel"
+        app:cornerLabelTextColor="@color/white"
+        />
+        
+        
+## 🔧 Custom Attributes:
+
+| Attribute                    | Description                 |
+| ---------------------------- | --------------------------- |
+| `cornerLabelText`            | Text inside the label       |
+| `cornerLabelTextSize`        | Size of label text          |
+| `cornerLabelTextColor`       | Label text color            |
+| `cornerLabelBackgroundColor` | Label background color      |
+| `cornerLabelLength`          | Length of the label (in dp) |
+| `cornerLabelMode`            | `left` or `right`           |
+
+
+
+⚙️ Requirements
+minSdkVersion: 24
+compileSdkVersion: 34
+Java: 11 or above
+
+
+
+🙋‍♂️ Author/ 💻 Developer
 Praveen Singh Shekhawat
-https://github.com/praveensinghshekhawat
+📧 praveensinghshekhawat8@gmail.com
+🔗 GitHub Profile
+
+☕ Support Me
+If you found this library helpful, consider buying me a coffee 💛
+[![Buy Me A Coffee](https://img.shields.io/badge/-Buy%20me%20a%20coffee-yellow?logo=buymeacoffee&logoColor=black&style=flat-square)](https://buymeacoffee.com/praveensinghshekhawat)
 
 
 ## License

@@ -1,4 +1,4 @@
-package com.cornerlabeltextview;
+package io.cornerlabeltextviewsample;
 
 import org.junit.Test;
 

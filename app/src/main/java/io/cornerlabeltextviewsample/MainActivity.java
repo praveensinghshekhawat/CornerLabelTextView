@@ -1,14 +1,12 @@
-package com.cornerlabeltextviewsample;
+package io.cornerlabeltextviewsample;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.cornerlabeltextview.CornerLabelTextview;
+import com.cornerlabeltextviewsample.R;
 
 public class MainActivity extends AppCompatActivity {
 

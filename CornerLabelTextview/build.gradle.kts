@@ -1,7 +1,11 @@
+import cn.lalaki.pub.BaseCentralPortalPlusExtension
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     id("maven-publish")
     id("signing")
+    id("cn.lalaki.central") version "1.2.8"
 }
 
 android {
@@ -38,49 +42,76 @@ android {
 }
 
 dependencies {
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    compileOnly(libs.appcompat)
+    compileOnly(libs.material)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
+val localProperties = Properties().apply {
+    load(rootProject.file("local.properties").inputStream())
+}
+
+val localMavenRepo =
+    uri(localProperties["localMavenRepoPath"] as String)
+
+centralPortalPlus {
+    url = localMavenRepo
+    username = localProperties["sonatypeUsername"] as String
+    password = localProperties["sonatypePassword"] as String
+    tokenXml = uri(localProperties["tokenXmlPath"] as String)
+    publishingType =
+        BaseCentralPortalPlusExtension.PublishingType.USER_MANAGED // or PublishingType.AUTOMATIC
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            afterEvaluate {
                 from(components["release"])
-                groupId = "io.github.praveensinghshekhawat"
-                artifactId = "cornerlabeltextview"
-                version = "1.0.0"
+            }
 
-                pom {
-                    name.set("CornerLabelTextView")
-                    description.set("A customizable Android TextView to show labels at corners like SALE, NEW, etc.")
-                    url.set("https://github.com/praveensinghshekhawat/CornerLabelTextView")
+            // groupId, artifactId, version
+            groupId = "io.github.praveensinghshekhawat"
+            artifactId = "cornerlabeltextview"
+            version = "1.0.2"
 
-                    licenses {
-                        license {
-                            name.set("The Apache License, Version 2.0")
-                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
+            pom {
+                name.set("CornerLabelTextView")
+                description.set("A customizable corner label TextView for Android.")
+                url.set("https://github.com/praveensinghshekhawat/cornerlabeltextview")
 
-                    developers {
-                        developer {
-                            id.set("praveensinghshekhawat")
-                            name.set("Praveen Singh Shekhawat")
-                            email.set("praveensinghshekhawat8@gmail.com")
-                        }
-                    }
-
-                    scm {
-                        connection.set("scm:git:https://github.com/praveensinghshekhawat/CornerLabelTextView.git")
-                        developerConnection.set("scm:git:ssh://github.com/praveensinghshekhawat/CornerLabelTextView.git")
-                        url.set("https://github.com/praveensinghshekhawat/CornerLabelTextView")
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
                     }
                 }
+
+                developers {
+                    developer {
+                        id.set("praveensinghshekhawat")
+                        name.set("Praveen Singh Shekhawat")
+                        email.set("praveensinghshekhawat8@gmail.com")
+                    }
+                }
+
+                scm {
+                    connection.set("scm:git:git://github.com/praveensinghshekhawat/cornerlabeltextview.git")
+                    developerConnection.set("scm:git:ssh://github.com/praveensinghshekhawat/cornerlabeltextview.git")
+                    url.set("https://github.com/praveensinghshekhawat/cornerlabeltextview")
+                }
             }
+
         }
     }
+
+    repositories {
+        maven {
+            url = localMavenRepo
+        }
+    }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications["release"])
 }

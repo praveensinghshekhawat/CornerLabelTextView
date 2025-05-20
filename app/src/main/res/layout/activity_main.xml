@@ -5,9 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="io.cornerlabeltextviewsample.MainActivity">
 
-    <com.cornerlabeltextview.CornerLabelTextview
+    <io.github.praveensinghshekhawat.CornerLabelTextview
         android:id="@+id/txt1"
         android:layout_width="100dp"
         android:layout_height="100dp"
