@@ -65,17 +65,14 @@ dependencies {
 
 
 
-🙋‍♂️ Author/ 💻 Developer
+## ️ 💻 Developer/Author
 
-Praveen Singh Shekhawat
+🙋‍ Praveen Singh Shekhawat  
+📧 praveensinghshekhawat8@gmail.com  
+🔗 [GitHub Profile](https://github.com/praveensinghshekhawat)  
 
-📧 praveensinghshekhawat8@gmail.com
-
-🔗 [GitHub Profile](https://github.com/praveensinghshekhawat)
-
-☕ Support Me
-If you found this library helpful, consider buying me a coffee 💛
-
+## ☕ Support Me
+If you found this library helpful, consider buying me a coffee 💛  
 [![](https://img.shields.io/badge/-Buy%20me%20a%20coffee-yellow?logo=buymeacoffee&logoColor=black&style=flat-square)](https://buymeacoffee.com/praveensinghshekhawat)
 
 ## License
