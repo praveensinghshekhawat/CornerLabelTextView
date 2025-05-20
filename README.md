@@ -57,10 +57,11 @@ dependencies {
 
 
 
-⚙️ Requirements
-minSdkVersion: 24
-compileSdkVersion: 34
-Java: 11 or above
+## ⚙️ Requirements
+
+- `minSdkVersion: 24`
+- `compileSdkVersion: 34`
+- `Java: 11 or above`
 
 
 
