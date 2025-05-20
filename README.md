@@ -58,15 +58,21 @@ dependencies {
 
 
 ⚙️ Requirements
+
 minSdkVersion: 24
+
 compileSdkVersion: 34
+
 Java: 11 or above
 
 
 
 🙋‍♂️ Author/ 💻 Developer
+
 Praveen Singh Shekhawat
+
 📧 praveensinghshekhawat8@gmail.com
+
 🔗 [GitHub Profile](https://github.com/praveensinghshekhawat)
 
 ☕ Support Me
