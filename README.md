@@ -71,6 +71,7 @@ Praveen Singh Shekhawat
 
 ☕ Support Me
 If you found this library helpful, consider buying me a coffee 💛
+
 [![](https://img.shields.io/badge/-Buy%20me%20a%20coffee-yellow?logo=buymeacoffee&logoColor=black&style=flat-square)](https://buymeacoffee.com/praveensinghshekhawat)
 
 ## License
