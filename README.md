@@ -20,7 +20,7 @@ TextViews with just a few XML attributes!
 
 ## 🚀 Installation
 
-<h2> 📦 Dependency </h2>
+<h3> 📦 Dependency </h3>
 
 <b>➡️ Gradle (Groovy)</b>
 ```gradle
