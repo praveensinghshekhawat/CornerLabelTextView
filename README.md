@@ -22,11 +22,11 @@ TextViews with just a few XML attributes!
 
 ## 📦 Dependency
 
-## gradle
+```gradle
 dependencies {
     implementation("io.github.praveensinghshekhawat:cornerlabeltextview:1.0.2")
 }
-
+```
 
 ## 🧩 Usage
 XML Example:
@@ -49,7 +49,6 @@ XML Example:
         app:cornerLabelText="CornerLabel"
         app:cornerLabelTextColor="@color/white"
         />
-        
         
 ## 🔧 Custom Attributes:
 
