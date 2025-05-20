@@ -22,7 +22,7 @@ TextViews with just a few XML attributes!
 
 ## 📦 Dependency
 
-```gradle
+## gradle
 dependencies {
     implementation("io.github.praveensinghshekhawat:cornerlabeltextview:1.0.2")
 }
@@ -78,10 +78,8 @@ Praveen Singh Shekhawat
 
 ☕ Support Me
 If you found this library helpful, consider buying me a coffee 💛
-[![Buy Me A Coffee](https://img.shields.io/badge/-Buy%20me%20a%20coffee-yellow?logo=buymeacoffee&logoColor=black&style=flat-square)](https://buymeacoffee.com/praveensinghshekhawat)
-
+[![](https://img.shields.io/badge/-Buy%20me%20a%20coffee-yellow?logo=buymeacoffee&logoColor=black&style=flat-square)](https://buymeacoffee.com/praveensinghshekhawat)
 
 ## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
