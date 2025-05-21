@@ -23,6 +23,10 @@ TextViews with just a few XML attributes!
   </tr>
 </table>
 
+## Screenshots
+
+<img src="https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/Screenshots/screenshot_1.jpg" />
+
 
 ## ✨ Features
 
