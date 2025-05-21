@@ -25,7 +25,7 @@ TextViews with just a few XML attributes!
 
 ## Screenshots
 
-<img src="https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/Screenshots/screenshot_1.jpg" />
+<img src="https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/Screenshots/screenshot_1.jpg" width="300"/>
 
 
 ## ✨ Features
