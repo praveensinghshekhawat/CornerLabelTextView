@@ -57,6 +57,8 @@ dependencies {
 
 
 ## 🧩 Usage
+
+<b>XML Example:</b>
 ```XML Example:
 
 <io.github.praveensinghshekhawat.CornerLabelTextview
@@ -71,6 +73,7 @@ dependencies {
     app:cornerLabelTextSize="10sp" />
 ```
 
+<b>Java Example:</b>
 ```Java Example:
 
 CornerLabelTextview stv = (CornerLabelTextview) findViewById(R.id.txt1);
