@@ -94,7 +94,7 @@ CornerLabelTextview stv = (CornerLabelTextview) findViewById(R.id.txt1);
 | `cornerLabelTextColor`       | Label text color            |
 | `cornerLabelBackgroundColor` | Label background color      |
 | `cornerLabelLength`          | Length of the label (in dp) |
-| `cornerLabelMode`            | `left` or `right`           |
+| `cornerLabelMode`            | `left``right``left_bottom`<br/>`right_bottom``left_triangle``right_triangle`<br/>`left_bottom_triangle``right_bottom_triangle`          |
 
 
 
