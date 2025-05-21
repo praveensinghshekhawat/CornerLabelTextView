@@ -41,6 +41,12 @@ TextViews with just a few XML attributes!
 
 <h3> 📦 Dependency </h3>
 
+```gradle
+repositories { 
+    mavenCentral()
+}
+```
+
 <b>➡️ Gradle (Groovy)</b>
 ```gradle
 dependencies {
