@@ -12,10 +12,16 @@ TextViews with just a few XML attributes!
 
 ## Preview
 
-<img src="https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/Screenshots/image_1.jpg" width="200"/>
-<img src="https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/Screenshots/image_2.jpg" width="200"/>
-<img src="https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/Screenshots/image_3.jpg" width="200"/>
-<img src="https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/Screenshots/image_4.jpg" width="200"/>  
+<table>
+  <tr>
+    <td><img src="https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/Screenshots/image_1.jpg" width="200"/></td>
+    <td><img src="https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/Screenshots/image_2.jpg" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/Screenshots/image_3.jpg" width="200"/></td>
+    <td><img src="https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/Screenshots/image_4.jpg" width="200"/></td>
+  </tr>
+</table>
 
 
 ## ✨ Features
