@@ -20,15 +20,6 @@ import io.github.praveensinghshekhawat.cornerlabeltextview.R;
 
 public class CornerLabelTextview extends View {
 
-    public static final int MODE_LEFT = 0;
-    public static final int MODE_RIGHT = 1;
-    public static final int MODE_LEFT_BOTTOM = 2;
-    public static final int MODE_RIGHT_BOTTOM = 3;
-    public static final int MODE_LEFT_TRIANGLE = 4;
-    public static final int MODE_RIGHT_TRIANGLE = 5;
-    public static final int MODE_LEFT_BOTTOM_TRIANGLE = 6;
-    public static final int MODE_RIGHT_BOTTOM_TRIANGLE = 7;
-
     public static final int ROTATE_ANGLE = 45;
     private Paint mPaint;
     private TextPaint mTextPaint;
@@ -37,7 +28,7 @@ public class CornerLabelTextview extends View {
     private int mCornerLabelBackgroundColor = Color.TRANSPARENT;
     private int mTextColor = Color.WHITE;
     private String mCornerLabelText = "";
-    private int mMode = MODE_LEFT;
+    private LabelMode mMode = LabelMode.MODE_LEFT; // Default mode, change as needed
 
     public CornerLabelTextview(Context context) {
         this(context, null);
@@ -70,7 +61,7 @@ public class CornerLabelTextview extends View {
         }
 
         if (array.hasValue(R.styleable.CornerLabelTextview_cornerLabelMode)) {
-            mMode = array.getInt(R.styleable.CornerLabelTextview_cornerLabelMode, 0);
+            mMode = LabelMode.fromInt(array.getInt(R.styleable.CornerLabelTextview_cornerLabelMode, 0));
         }
         array.recycle();
 
@@ -93,38 +84,16 @@ public class CornerLabelTextview extends View {
     }
 
     private void drawBackground(Canvas canvas) {
-        Path path = new Path();
+        //   Path path = new Path();
         int w = getWidth();
         int h = getHeight();
 
-        if (w != h) throw new IllegalStateException("CornerLabelTextview's width must equal to height");
+        if (w != h)
+            throw new IllegalStateException("CornerLabelTextview's width must equal to height");
 
-        switch (mMode) {
-            case MODE_LEFT:
-                path = getModeLeftPath(path, w, h);
-                break;
-            case MODE_RIGHT:
-                path = getModeRightPath(path, w, h);
-                break;
-            case MODE_LEFT_BOTTOM:
-                path = getModeLeftBottomPath(path, w, h);
-                break;
-            case MODE_RIGHT_BOTTOM:
-                path = getModeRightBottomPath(path, w, h);
-                break;
-            case MODE_LEFT_TRIANGLE:
-                path = getModeLeftTrianglePath(path, w, h);
-                break;
-            case MODE_RIGHT_TRIANGLE:
-                path = getModeRightTrianglePath(path, w, h);
-                break;
-            case MODE_LEFT_BOTTOM_TRIANGLE:
-                path = getModeLeftBottomTrianglePath(path, w, h);
-                break;
-            case MODE_RIGHT_BOTTOM_TRIANGLE:
-                path = getModeRightBottomTrianglePath(path, w, h);
-                break;
-        }
+        Path path = new Path();
+        path = mMode.getPath(this, path, w, h); // Cleaner, no switch-case
+
         path.close();
         canvas.drawPath(path, mPaint);
         canvas.save();
@@ -161,46 +130,46 @@ public class CornerLabelTextview extends View {
     }
 
     private Path getModeLeftTrianglePath(Path path, int w, int h) {
-        path.lineTo(0,h);
-        path.lineTo(w,0);
+        path.lineTo(0, h);
+        path.lineTo(w, 0);
         return path;
     }
 
     private Path getModeRightTrianglePath(Path path, int w, int h) {
-        path.lineTo(w,0);
-        path.lineTo(w,h);
+        path.lineTo(w, 0);
+        path.lineTo(w, h);
         return path;
     }
 
     private Path getModeLeftBottomTrianglePath(Path path, int w, int h) {
-        path.lineTo(w,h);
-        path.lineTo(0,h);
+        path.lineTo(w, h);
+        path.lineTo(0, h);
         return path;
     }
 
     private Path getModeRightBottomTrianglePath(Path path, int w, int h) {
-        path.moveTo(0,h);
-        path.lineTo(w,h);
-        path.lineTo(w,0);
+        path.moveTo(0, h);
+        path.lineTo(w, h);
+        path.lineTo(w, 0);
         return path;
     }
 
     private void drawText(Canvas canvas) {
         int w = (int) (canvas.getWidth() - mCornerLabelLength / 2);
         int h = (int) (canvas.getHeight() - mCornerLabelLength / 2);
-        float[] xy = calculateXY(canvas,w, h);
+        float[] xy = calculateXY(canvas, w, h);
         float toX = xy[0];
         float toY = xy[1];
         float centerX = xy[2];
         float centerY = xy[3];
         float angle = xy[4];
 
-        canvas.rotate(angle, centerX , centerY );
+        canvas.rotate(angle, centerX, centerY);
 
         canvas.drawText(mCornerLabelText, toX, toY, mTextPaint);
     }
 
-    private float[] calculateXY(Canvas canvas,int w, int h) {
+    private float[] calculateXY(Canvas canvas, int w, int h) {
         float[] xy = new float[5];
         Rect rect = null;
         RectF rectF = null;
@@ -236,7 +205,7 @@ public class CornerLabelTextview extends View {
                 break;
             case MODE_LEFT_BOTTOM_TRIANGLE:
             case MODE_LEFT_BOTTOM:
-                rect = new Rect(0, offset, w, h+offset);
+                rect = new Rect(0, offset, w, h + offset);
                 rectF = new RectF(rect);
                 rectF.right = mTextPaint.measureText(mCornerLabelText, 0, mCornerLabelText.length());
                 rectF.bottom = mTextPaint.descent() - mTextPaint.ascent();
@@ -251,7 +220,7 @@ public class CornerLabelTextview extends View {
                 break;
             case MODE_RIGHT_BOTTOM_TRIANGLE:
             case MODE_RIGHT_BOTTOM:
-                rect = new Rect(offset, offset, w+offset, h+offset);
+                rect = new Rect(offset, offset, w + offset, h + offset);
                 rectF = new RectF(rect);
                 rectF.right = mTextPaint.measureText(mCornerLabelText, 0, mCornerLabelText.length());
                 rectF.bottom = mTextPaint.descent() - mTextPaint.ascent();
@@ -301,19 +270,20 @@ public class CornerLabelTextview extends View {
 
     /**
      * @param mode :
-     *             CornerLabelTextview.MODE_LEFT : top left
-     *             CornerLabelTextview.MODE_RIGHT :top right
+     *             CornerLabelTextview.LabelMode.MODE_LEFT : top left
+     *             CornerLabelTextview.LabelMode.MODE_RIGHT :top right
      * @return this
      */
-    public CornerLabelTextview setMode(int mode) {
-        if (mMode > MODE_RIGHT_BOTTOM_TRIANGLE || mMode < 0)
-            throw new IllegalArgumentException(mode + "is illegal argument ,please use right value");
+    public CornerLabelTextview setMode(LabelMode mode) {
+        if (mode == null) {
+            throw new IllegalArgumentException("Mode cannot be null");
+        }
         this.mMode = mode;
         postInvalidate();
         return this;
     }
 
-    public int getMode() {
+    public LabelMode getMode() {
         return mMode;
     }
 
@@ -334,6 +304,64 @@ public class CornerLabelTextview extends View {
         mCornerLabelLength = length;
         postInvalidate();
         return this;
+    }
+
+    public enum LabelMode {
+        MODE_LEFT {
+            @Override
+            Path getPath(CornerLabelTextview view, Path path, int w, int h) {
+                return view.getModeLeftPath(path, w, h);
+            }
+        },
+        MODE_RIGHT {
+            @Override
+            Path getPath(CornerLabelTextview view, Path path, int w, int h) {
+                return view.getModeRightPath(path, w, h);
+            }
+        },
+        MODE_LEFT_BOTTOM {
+            @Override
+            Path getPath(CornerLabelTextview view, Path path, int w, int h) {
+                return view.getModeLeftBottomPath(path, w, h);
+            }
+        },
+        MODE_RIGHT_BOTTOM {
+            @Override
+            Path getPath(CornerLabelTextview view, Path path, int w, int h) {
+                return view.getModeRightBottomPath(path, w, h);
+            }
+        },
+        MODE_LEFT_TRIANGLE {
+            @Override
+            Path getPath(CornerLabelTextview view, Path path, int w, int h) {
+                return view.getModeLeftTrianglePath(path, w, h);
+            }
+        },
+        MODE_RIGHT_TRIANGLE {
+            @Override
+            Path getPath(CornerLabelTextview view, Path path, int w, int h) {
+                return view.getModeRightTrianglePath(path, w, h);
+            }
+        },
+        MODE_LEFT_BOTTOM_TRIANGLE {
+            @Override
+            Path getPath(CornerLabelTextview view, Path path, int w, int h) {
+                return view.getModeLeftBottomTrianglePath(path, w, h);
+            }
+        },
+        MODE_RIGHT_BOTTOM_TRIANGLE {
+            @Override
+            Path getPath(CornerLabelTextview view, Path path, int w, int h) {
+                return view.getModeRightBottomTrianglePath(path, w, h);
+            }
+        };
+
+        abstract Path getPath(CornerLabelTextview view, Path path, int w, int h);
+
+        public static LabelMode fromInt(int index) {
+            LabelMode[] values = LabelMode.values();
+            return (index >= 0 && index < values.length) ? values[index] : MODE_LEFT;
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 package io.cornerlabeltextviewsample;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.cornerlabeltextviewsample.R;
+import io.github.praveensinghshekhawat.CornerLabelTextview;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,13 +24,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 //        CornerLabelTextview stv = (CornerLabelTextview) findViewById(R.id.txt1);
-//
 //        stv.setText("CornerLabel")
 //                .setTextColor(Color.WHITE)
 //                .setCornerLabelBackgroundColor(Color.BLACK)
 //                .setTextSize(18)
 //                .setCornerLabelLength(50)
-//                .setMode(CornerLabelTextview.MODE_LEFT);
-        
+//                .setMode(CornerLabelTextview.LabelMode.MODE_LEFT);
+
     }
 }

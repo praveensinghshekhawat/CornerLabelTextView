@@ -8,22 +8,177 @@
     tools:context="io.cornerlabeltextviewsample.MainActivity">
 
     <io.github.praveensinghshekhawat.CornerLabelTextview
-        android:id="@+id/txt1"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        app:cornerLabelBackgroundColor="@color/blue_500"
+        app:cornerLabelLength="50dp"
+        app:cornerLabelMode="left"
+        app:cornerLabelText="Corner"
+        app:cornerLabelTextColor="@color/white"
+        app:cornerLabelTextSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <io.github.praveensinghshekhawat.CornerLabelTextview
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cornerLabelBackgroundColor="@color/blue_500"
+        app:cornerLabelLength="50dp"
+        app:cornerLabelMode="right"
+        app:cornerLabelText="Label"
+        app:cornerLabelTextColor="@color/white"
+        app:cornerLabelTextSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <io.github.praveensinghshekhawat.CornerLabelTextview
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:cornerLabelBackgroundColor="@color/blue_500"
+        app:cornerLabelLength="50dp"
+        app:cornerLabelMode="right_bottom_triangle"
+        app:cornerLabelText="View"
+        app:cornerLabelTextColor="@color/white"
+        app:cornerLabelTextSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <io.github.praveensinghshekhawat.CornerLabelTextview
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:cornerLabelBackgroundColor="@color/blue_500"
+        app:cornerLabelLength="50dp"
+        app:cornerLabelMode="left_bottom_triangle"
+        app:cornerLabelText="Text"
+        app:cornerLabelTextColor="@color/white"
+        app:cornerLabelTextSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <FrameLayout
+        android:id="@+id/frame1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        app:cornerLabelBackgroundColor="@color/black"
-        app:cornerLabelLength="30dp"
-        app:cornerLabelTextSize="10sp"
-        app:cornerLabelMode="left"
-        app:cornerLabelText="CornerLabel"
-        app:cornerLabelTextColor="@color/white"
-        />
+        android:layout_marginTop="100dp">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:src="@drawable/images1"
+            android:scaleType="fitXY"/>
+
+        <io.github.praveensinghshekhawat.CornerLabelTextview
+            android:id="@+id/txt1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:cornerLabelBackgroundColor="@color/blue_500"
+            app:cornerLabelLength="30dp"
+            app:cornerLabelMode="left"
+            app:cornerLabelText="Sale"
+            app:cornerLabelTextColor="@color/white"
+            app:cornerLabelTextSize="15sp" />
+
+        <View
+            android:layout_width="250dp"
+            android:layout_height="10dp"
+            android:background="@color/white"
+            android:layout_gravity="bottom"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frame2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/frame1"
+        app:layout_constraintStart_toStartOf="@+id/frame1">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:src="@drawable/images2" />
+
+        <io.github.praveensinghshekhawat.CornerLabelTextview
+            android:id="@+id/txt2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="end"
+            app:cornerLabelBackgroundColor="@color/pink_300"
+            app:cornerLabelLength="30dp"
+            app:cornerLabelMode="right"
+            app:cornerLabelText="Sale"
+            app:cornerLabelTextColor="@color/white"
+            app:cornerLabelTextSize="15sp" />
+
+        <View
+            android:layout_width="250dp"
+            android:layout_height="10dp"
+            android:background="@color/white"
+            android:layout_gravity="bottom"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frame3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/frame2"
+        app:layout_constraintStart_toStartOf="@+id/frame2">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:src="@drawable/images3" />
+
+        <io.github.praveensinghshekhawat.CornerLabelTextview
+            android:id="@+id/txt3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="start"
+            app:cornerLabelBackgroundColor="@color/blue_500"
+            app:cornerLabelLength="50dp"
+            app:cornerLabelMode="left_triangle"
+            app:cornerLabelText="Sale"
+            app:cornerLabelTextColor="@color/white"
+            app:cornerLabelTextSize="15sp" />
+
+        <View
+            android:layout_width="250dp"
+            android:layout_height="10dp"
+            android:background="@color/white"
+            android:layout_gravity="bottom"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frame4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/frame3"
+        app:layout_constraintStart_toStartOf="@+id/frame3">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:src="@drawable/images4" />
+
+        <io.github.praveensinghshekhawat.CornerLabelTextview
+            android:id="@+id/txt4"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="end"
+            app:cornerLabelBackgroundColor="@color/pink_300"
+            app:cornerLabelLength="50dp"
+            app:cornerLabelMode="right_triangle"
+            app:cornerLabelText="Sale"
+            app:cornerLabelTextColor="@color/white"
+            app:cornerLabelTextSize="15sp" />
+
+        <View
+            android:layout_width="250dp"
+            android:layout_height="10dp"
+            android:background="@color/white"
+            android:layout_gravity="bottom"/>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
