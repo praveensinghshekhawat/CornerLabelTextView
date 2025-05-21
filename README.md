@@ -68,8 +68,18 @@ dependencies {
     app:cornerLabelMode="left"
     app:cornerLabelText="CornerLabel" 
     app:cornerLabelTextColor="@color/white"
-    app:cornerLabelTextSize="10sp"
-    android:gravity="center"/>
+    app:cornerLabelTextSize="10sp" />
+```
+
+```Java Example:
+
+CornerLabelTextview stv = (CornerLabelTextview) findViewById(R.id.txt1);
+        stv.setText("CornerLabel")
+                .setTextColor(Color.WHITE)
+                .setCornerLabelBackgroundColor(Color.BLACK)
+                .setTextSize(18)
+                .setCornerLabelLength(50)
+                .setMode(CornerLabelTextview.LabelMode.MODE_LEFT);
 ```
         
 ## 🔧 Custom Attributes:
