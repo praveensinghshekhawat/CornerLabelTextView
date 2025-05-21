@@ -118,7 +118,8 @@ CornerLabelTextview stv = (CornerLabelTextview) findViewById(R.id.txt1);
 
 🙋‍ Praveen Singh Shekhawat  
 📧 praveensinghshekhawat8@gmail.com  
-🔗 [GitHub Profile](https://github.com/praveensinghshekhawat)  
+🐙 [GitHub Profile](https://github.com/praveensinghshekhawat)  
+🔗 [LinkedIn Profile](https://www.linkedin.com/in/praveen-shekhawat8)
 
 ## ☕ Support Me
 If you found this library helpful, consider buying me a coffee 💛  
