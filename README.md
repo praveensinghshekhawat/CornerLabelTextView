@@ -1,6 +1,8 @@
 # CornerLabelTextView
 
 [![](https://img.shields.io/maven-central/v/io.github.praveensinghshekhawat/cornerlabeltextview.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.praveensinghshekhawat/cornerlabeltextview)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ca71f005bd44dc4893761c16007b0ea)](https://app.codacy.com/gh/praveensinghshekhawat/CornerLabelTextView/dashboard)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-c02041?logo=apache)](https://github.com/praveensinghshekhawat/CornerLabelTextView/blob/main/LICENSE)
 
 A customizable Android TextView to show corner labels like **SALE**, **NEW**, etc. Easily add labels
 to your views without complex layouts.
