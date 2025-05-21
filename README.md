@@ -87,14 +87,14 @@ CornerLabelTextview stv = (CornerLabelTextview) findViewById(R.id.txt1);
         
 ## 🔧 Custom Attributes:
 
-| Attribute                    | Description                 |
-| ---------------------------- | --------------------------- |
-| `cornerLabelText`            | Text inside the label       |
-| `cornerLabelTextSize`        | Size of label text          |
-| `cornerLabelTextColor`       | Label text color            |
-| `cornerLabelBackgroundColor` | Label background color      |
-| `cornerLabelLength`          | Length of the label (in dp) |
-| `cornerLabelMode`            | `left``right``left_bottom`<br/>`right_bottom``left_triangle``right_triangle`<br/>`left_bottom_triangle``right_bottom_triangle`          |
+| Attribute                    | Description                                                                                                                           |
+| ---------------------------- |---------------------------------------------------------------------------------------------------------------------------------------|
+| `cornerLabelText`            | Text inside the label                                                                                                                 |
+| `cornerLabelTextSize`        | Size of label text                                                                                                                    |
+| `cornerLabelTextColor`       | Label text color                                                                                                                      |
+| `cornerLabelBackgroundColor` | Label background color                                                                                                                |
+| `cornerLabelLength`          | Length of the label (in dp)                                                                                                           |
+| `cornerLabelMode`            | `left`,`right`,`left_bottom`,<br/>`right_bottom`,`left_triangle`,`right_triangle`,<br/>`left_bottom_triangle`,`right_bottom_triangle` |
 
 
 
