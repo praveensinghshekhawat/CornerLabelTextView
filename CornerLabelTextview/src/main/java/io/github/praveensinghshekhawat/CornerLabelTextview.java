@@ -157,7 +157,8 @@ public class CornerLabelTextview extends View {
     private void drawText(Canvas canvas) {
         int w = (int) (canvas.getWidth() - mCornerLabelLength / 2);
         int h = (int) (canvas.getHeight() - mCornerLabelLength / 2);
-        float[] xy = calculateXY(canvas, w, h);
+        int offset = (int) (mCornerLabelLength / 2);
+        float[] xy = mMode.calculateXY(this, w, h, offset);
         float toX = xy[0];
         float toY = xy[1];
         float centerX = xy[2];
@@ -165,74 +166,21 @@ public class CornerLabelTextview extends View {
         float angle = xy[4];
 
         canvas.rotate(angle, centerX, centerY);
-
         canvas.drawText(mCornerLabelText, toX, toY, mTextPaint);
     }
 
-    private float[] calculateXY(Canvas canvas, int w, int h) {
+    private float[] buildXY(Rect rect, float centerX, float centerY, float rotation_angle) {
         float[] xy = new float[5];
-        Rect rect = null;
-        RectF rectF = null;
-        int offset = (int) (mCornerLabelLength / 2);
-        switch (mMode) {
-            case MODE_LEFT_TRIANGLE:
-            case MODE_LEFT:
-                rect = new Rect(0, 0, w, h);
-                rectF = new RectF(rect);
-                rectF.right = mTextPaint.measureText(mCornerLabelText, 0, mCornerLabelText.length());
-                rectF.bottom = mTextPaint.descent() - mTextPaint.ascent();
-                rectF.left += (rect.width() - rectF.right) / 2.0f;
-                rectF.top += (rect.height() - rectF.bottom) / 2.0f;
-                xy[0] = rectF.left;
-                xy[1] = rectF.top - mTextPaint.ascent();
-                xy[2] = w / 2;
-                xy[3] = h / 2;
-                xy[4] = -ROTATE_ANGLE;
-                break;
-            case MODE_RIGHT_TRIANGLE:
-            case MODE_RIGHT:
-                rect = new Rect(offset, 0, w + offset, h);
-                rectF = new RectF(rect);
-                rectF.right = mTextPaint.measureText(mCornerLabelText, 0, mCornerLabelText.length());
-                rectF.bottom = mTextPaint.descent() - mTextPaint.ascent();
-                rectF.left += (rect.width() - rectF.right) / 2.0f;
-                rectF.top += (rect.height() - rectF.bottom) / 2.0f;
-                xy[0] = rectF.left;
-                xy[1] = rectF.top - mTextPaint.ascent();
-                xy[2] = w / 2 + offset;
-                xy[3] = h / 2;
-                xy[4] = ROTATE_ANGLE;
-                break;
-            case MODE_LEFT_BOTTOM_TRIANGLE:
-            case MODE_LEFT_BOTTOM:
-                rect = new Rect(0, offset, w, h + offset);
-                rectF = new RectF(rect);
-                rectF.right = mTextPaint.measureText(mCornerLabelText, 0, mCornerLabelText.length());
-                rectF.bottom = mTextPaint.descent() - mTextPaint.ascent();
-                rectF.left += (rect.width() - rectF.right) / 2.0f;
-                rectF.top += (rect.height() - rectF.bottom) / 2.0f;
-
-                xy[0] = rectF.left;
-                xy[1] = rectF.top - mTextPaint.ascent();
-                xy[2] = w / 2;
-                xy[3] = h / 2 + offset;
-                xy[4] = ROTATE_ANGLE;
-                break;
-            case MODE_RIGHT_BOTTOM_TRIANGLE:
-            case MODE_RIGHT_BOTTOM:
-                rect = new Rect(offset, offset, w + offset, h + offset);
-                rectF = new RectF(rect);
-                rectF.right = mTextPaint.measureText(mCornerLabelText, 0, mCornerLabelText.length());
-                rectF.bottom = mTextPaint.descent() - mTextPaint.ascent();
-                rectF.left += (rect.width() - rectF.right) / 2.0f;
-                rectF.top += (rect.height() - rectF.bottom) / 2.0f;
-                xy[0] = rectF.left;
-                xy[1] = rectF.top - mTextPaint.ascent();
-                xy[2] = w / 2 + offset;
-                xy[3] = h / 2 + offset;
-                xy[4] = -ROTATE_ANGLE;
-                break;
-        }
+        RectF rectF = new RectF(rect);
+        rectF.right = mTextPaint.measureText(mCornerLabelText, 0, mCornerLabelText.length());
+        rectF.bottom = mTextPaint.descent() - mTextPaint.ascent();
+        rectF.left += (rect.width() - rectF.right) / 2.0f;
+        rectF.top += (rect.height() - rectF.bottom) / 2.0f;
+        xy[0] = rectF.left;
+        xy[1] = rectF.top - mTextPaint.ascent();
+        xy[2] = centerX;
+        xy[3] = centerY;
+        xy[4] = rotation_angle;
         return xy;
     }
 
@@ -312,11 +260,23 @@ public class CornerLabelTextview extends View {
             Path getPath(CornerLabelTextview view, Path path, int w, int h) {
                 return view.getModeLeftPath(path, w, h);
             }
+
+            @Override
+            float[] calculateXY(CornerLabelTextview view, int w, int h, int offset) {
+                Rect rect = new Rect(0, 0, w, h);
+                return view.buildXY(rect, w / 2, h / 2, -ROTATE_ANGLE);
+            }
         },
         MODE_RIGHT {
             @Override
             Path getPath(CornerLabelTextview view, Path path, int w, int h) {
                 return view.getModeRightPath(path, w, h);
+            }
+
+            @Override
+            float[] calculateXY(CornerLabelTextview view, int w, int h, int offset) {
+                Rect rect = new Rect(offset, 0, w + offset, h);
+                return view.buildXY(rect, w / 2 + offset, h / 2, ROTATE_ANGLE);
             }
         },
         MODE_LEFT_BOTTOM {
@@ -324,11 +284,23 @@ public class CornerLabelTextview extends View {
             Path getPath(CornerLabelTextview view, Path path, int w, int h) {
                 return view.getModeLeftBottomPath(path, w, h);
             }
+
+            @Override
+            float[] calculateXY(CornerLabelTextview view, int w, int h, int offset) {
+                Rect rect = new Rect(0, offset, w, h + offset);
+                return view.buildXY(rect, w / 2, h / 2 + offset, ROTATE_ANGLE);
+            }
         },
         MODE_RIGHT_BOTTOM {
             @Override
             Path getPath(CornerLabelTextview view, Path path, int w, int h) {
                 return view.getModeRightBottomPath(path, w, h);
+            }
+
+            @Override
+            float[] calculateXY(CornerLabelTextview view, int w, int h, int offset) {
+                Rect rect = new Rect(offset, offset, w + offset, h + offset);
+                return view.buildXY(rect, w / 2 + offset, h / 2 + offset, -ROTATE_ANGLE);
             }
         },
         MODE_LEFT_TRIANGLE {
@@ -336,11 +308,23 @@ public class CornerLabelTextview extends View {
             Path getPath(CornerLabelTextview view, Path path, int w, int h) {
                 return view.getModeLeftTrianglePath(path, w, h);
             }
+
+            @Override
+            float[] calculateXY(CornerLabelTextview view, int w, int h, int offset) {
+                Rect rect = new Rect(0, 0, w, h);
+                return view.buildXY(rect, w / 2, h / 2, -ROTATE_ANGLE);
+            }
         },
         MODE_RIGHT_TRIANGLE {
             @Override
             Path getPath(CornerLabelTextview view, Path path, int w, int h) {
                 return view.getModeRightTrianglePath(path, w, h);
+            }
+
+            @Override
+            float[] calculateXY(CornerLabelTextview view, int w, int h, int offset) {
+                Rect rect = new Rect(offset, 0, w + offset, h);
+                return view.buildXY(rect, w / 2 + offset, h / 2, ROTATE_ANGLE);
             }
         },
         MODE_LEFT_BOTTOM_TRIANGLE {
@@ -348,15 +332,29 @@ public class CornerLabelTextview extends View {
             Path getPath(CornerLabelTextview view, Path path, int w, int h) {
                 return view.getModeLeftBottomTrianglePath(path, w, h);
             }
+
+            @Override
+            float[] calculateXY(CornerLabelTextview view, int w, int h, int offset) {
+                Rect rect = new Rect(0, offset, w, h + offset);
+                return view.buildXY(rect, w / 2, h / 2 + offset, ROTATE_ANGLE);
+            }
         },
         MODE_RIGHT_BOTTOM_TRIANGLE {
             @Override
             Path getPath(CornerLabelTextview view, Path path, int w, int h) {
                 return view.getModeRightBottomTrianglePath(path, w, h);
             }
+
+            @Override
+            float[] calculateXY(CornerLabelTextview view, int w, int h, int offset) {
+                Rect rect = new Rect(offset, offset, w + offset, h + offset);
+                return view.buildXY(rect, w / 2 + offset, h / 2 + offset, -ROTATE_ANGLE);
+            }
         };
 
         abstract Path getPath(CornerLabelTextview view, Path path, int w, int h);
+
+        abstract float[] calculateXY(CornerLabelTextview view, int w, int h, int offset);
 
         public static LabelMode fromInt(int index) {
             LabelMode[] values = LabelMode.values();
