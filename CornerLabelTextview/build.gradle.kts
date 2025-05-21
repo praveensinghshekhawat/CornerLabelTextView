@@ -1,6 +1,6 @@
 import cn.lalaki.pub.BaseCentralPortalPlusExtension
 import java.util.Properties
-
+val releaseVariant = "release"
 plugins {
     alias(libs.plugins.android.library)
     id("maven-publish")
@@ -34,7 +34,7 @@ android {
     }
 
     publishing {
-        singleVariant("release") {
+        singleVariant(releaseVariant) {
             withSourcesJar()
             withJavadocJar()
         }
@@ -64,9 +64,9 @@ centralPortalPlus {
 
 publishing {
     publications {
-        create<MavenPublication>("release") {
+        create<MavenPublication>(releaseVariant) {
             afterEvaluate {
-                from(components["release"])
+                from(components[releaseVariant])
             }
 
             // groupId, artifactId, version
@@ -113,5 +113,5 @@ publishing {
 
 signing {
     useGpgCmd()
-    sign(publishing.publications["release"])
+    sign(publishing.publications[releaseVariant])
 }
